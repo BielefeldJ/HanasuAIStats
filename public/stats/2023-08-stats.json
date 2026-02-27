@@ -1,0 +1,122 @@
+{
+  "channellist": [
+    "reglina",
+    "banana_music_jp",
+    "oldskoolplayhousehi",
+    "tuinkabouter1965",
+    "aika_vrdj",
+    "akishirota_art",
+    "reg_retro",
+    "maiamakalea",
+    "kesibin",
+    "banana_channel_japan",
+    "dj_avt",
+    "djyumaride",
+    "jimmyyyt",
+    "officialdjjohnrobinson",
+    "kellytears710",
+    "iku_soul_aka_barsoulon",
+    "hajitch",
+    "dj_yuuuki"
+  ],
+  "perChannel": [
+    {
+      "channel": "reglina",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "banana_music_jp",
+      "toJP": 282,
+      "toEN": 602
+    },
+    {
+      "channel": "oldskoolplayhousehi",
+      "toJP": 155,
+      "toEN": 1
+    },
+    {
+      "channel": "tuinkabouter1965",
+      "toJP": 17,
+      "toEN": 0
+    },
+    {
+      "channel": "aika_vrdj",
+      "toJP": 339,
+      "toEN": 46
+    },
+    {
+      "channel": "akishirota_art",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "reg_retro",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "maiamakalea",
+      "toJP": 19,
+      "toEN": 15
+    },
+    {
+      "channel": "kesibin",
+      "toJP": 2057,
+      "toEN": 90
+    },
+    {
+      "channel": "banana_channel_japan",
+      "toJP": 13,
+      "toEN": 0
+    },
+    {
+      "channel": "dj_avt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "djyumaride",
+      "toJP": 2,
+      "toEN": 0
+    },
+    {
+      "channel": "jimmyyyt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "officialdjjohnrobinson",
+      "toJP": 1,
+      "toEN": 0
+    },
+    {
+      "channel": "kellytears710",
+      "toJP": 3,
+      "toEN": 8
+    },
+    {
+      "channel": "iku_soul_aka_barsoulon",
+      "toJP": 46,
+      "toEN": 15
+    },
+    {
+      "channel": "hajitch",
+      "toJP": 1187,
+      "toEN": 1744
+    },
+    {
+      "channel": "dj_yuuuki",
+      "toJP": 20,
+      "toEN": 5
+    }
+  ],
+  "Month": {
+    "toJP": 4466,
+    "toEN": 2789
+  },
+  "Total": {
+    "toJP": 169445,
+    "toEN": 153813
+  }
+}

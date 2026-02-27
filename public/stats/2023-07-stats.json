@@ -1,0 +1,134 @@
+{
+  "channellist": [
+    "banana_channel_japan",
+    "reglina",
+    "dj_avt",
+    "banana_music_jp",
+    "djyumaride",
+    "ymgcharu",
+    "yukamaru_jp",
+    "oldskoolplayhousehi",
+    "officialdjjohnrobinson",
+    "tuinkabouter1965",
+    "kellytears710",
+    "aika_vrdj",
+    "iku_soul_aka_barsoulon",
+    "akishirota_art",
+    "hajitch",
+    "reg_retro",
+    "jimmyyyt",
+    "maiamakalea",
+    "dj_yuuuki",
+    "kesibin"
+  ],
+  "perChannel": [
+    {
+      "channel": "banana_channel_japan",
+      "toJP": 19,
+      "toEN": 0
+    },
+    {
+      "channel": "reglina",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "dj_avt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "banana_music_jp",
+      "toJP": 244,
+      "toEN": 543
+    },
+    {
+      "channel": "djyumaride",
+      "toJP": 18,
+      "toEN": 0
+    },
+    {
+      "channel": "ymgcharu",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "yukamaru_jp",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "oldskoolplayhousehi",
+      "toJP": 100,
+      "toEN": 0
+    },
+    {
+      "channel": "officialdjjohnrobinson",
+      "toJP": 2,
+      "toEN": 1
+    },
+    {
+      "channel": "tuinkabouter1965",
+      "toJP": 21,
+      "toEN": 5
+    },
+    {
+      "channel": "kellytears710",
+      "toJP": 15,
+      "toEN": 15
+    },
+    {
+      "channel": "aika_vrdj",
+      "toJP": 0,
+      "toEN": 15
+    },
+    {
+      "channel": "iku_soul_aka_barsoulon",
+      "toJP": 53,
+      "toEN": 14
+    },
+    {
+      "channel": "akishirota_art",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "hajitch",
+      "toJP": 1014,
+      "toEN": 2495
+    },
+    {
+      "channel": "reg_retro",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "jimmyyyt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "maiamakalea",
+      "toJP": 18,
+      "toEN": 21
+    },
+    {
+      "channel": "dj_yuuuki",
+      "toJP": 17,
+      "toEN": 7
+    },
+    {
+      "channel": "kesibin",
+      "toJP": 1796,
+      "toEN": 75
+    }
+  ],
+  "Month": {
+    "toJP": 3317,
+    "toEN": 3191
+  },
+  "Total": {
+    "toJP": 164979,
+    "toEN": 151024
+  }
+}

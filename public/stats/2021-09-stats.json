@@ -1,0 +1,44 @@
+{
+  "channellist": [
+    "banana_channel_japan",
+    "reglina",
+    "dj_avt",
+    "dj_sweetz_beats",
+    "djyumaride"
+  ],
+  "perChannel": [
+    {
+      "channel": "banana_channel_japan",
+      "toJP": 9,
+      "toEN": 6
+    },
+    {
+      "channel": "reglina",
+      "toJP": 17,
+      "toEN": 13
+    },
+    {
+      "channel": "dj_avt",
+      "toJP": 10,
+      "toEN": 0
+    },
+    {
+      "channel": "dj_sweetz_beats",
+      "toJP": 5416,
+      "toEN": 8592
+    },
+    {
+      "channel": "djyumaride",
+      "toJP": 56,
+      "toEN": 132
+    }
+  ],
+  "Month": {
+    "toJP": 5542,
+    "toEN": 8751
+  },
+  "Total": {
+    "toJP": 5553,
+    "toEN": 8756
+  }
+}

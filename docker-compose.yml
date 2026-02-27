@@ -1,0 +1,13 @@
+services:
+  hanasu-stats:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      # Mount the stats folder (one level up from this project) read-only.
+      # Drop a new YYYY-MM-stats.json here and nginx serves it immediately —
+      # no image rebuild needed.
+      - ../stats:/stats:ro
+    restart: unless-stopped

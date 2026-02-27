@@ -1,0 +1,146 @@
+{
+  "channellist": [
+    "reglina",
+    "banana_music_jp",
+    "oldskoolplayhousehi",
+    "tuinkabouter1965",
+    "aika_vrdj",
+    "reg_retro",
+    "maiamakalea",
+    "kesibin",
+    "banana_channel_japan",
+    "dj_avt",
+    "djyumaride",
+    "jimmyyyt",
+    "officialdjjohnrobinson",
+    "kellytears710",
+    "iku_soul_aka_barsoulon",
+    "hajitch",
+    "dj_yuuuki",
+    "yuramaro",
+    "l___ou",
+    "politicalvinylence",
+    "szechone",
+    "beatsunitedradio"
+  ],
+  "perChannel": [
+    {
+      "channel": "reglina",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "banana_music_jp",
+      "toJP": 104,
+      "toEN": 248
+    },
+    {
+      "channel": "oldskoolplayhousehi",
+      "toJP": 44,
+      "toEN": 1
+    },
+    {
+      "channel": "tuinkabouter1965",
+      "toJP": 565,
+      "toEN": 71
+    },
+    {
+      "channel": "aika_vrdj",
+      "toJP": 1057,
+      "toEN": 9
+    },
+    {
+      "channel": "reg_retro",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "maiamakalea",
+      "toJP": 7,
+      "toEN": 7
+    },
+    {
+      "channel": "kesibin",
+      "toJP": 580,
+      "toEN": 38
+    },
+    {
+      "channel": "banana_channel_japan",
+      "toJP": 5,
+      "toEN": 0
+    },
+    {
+      "channel": "dj_avt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "djyumaride",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "jimmyyyt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "officialdjjohnrobinson",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "kellytears710",
+      "toJP": 879,
+      "toEN": 376
+    },
+    {
+      "channel": "iku_soul_aka_barsoulon",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "hajitch",
+      "toJP": 1623,
+      "toEN": 13210
+    },
+    {
+      "channel": "dj_yuuuki",
+      "toJP": 10,
+      "toEN": 0
+    },
+    {
+      "channel": "yuramaro",
+      "toJP": 4,
+      "toEN": 2
+    },
+    {
+      "channel": "l___ou",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "politicalvinylence",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "szechone",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "beatsunitedradio",
+      "toJP": 58,
+      "toEN": 9
+    }
+  ],
+  "Month": {
+    "toJP": 4936,
+    "toEN": 13971
+  },
+  "Total": {
+    "toJP": 246660,
+    "toEN": 280842
+  }
+}

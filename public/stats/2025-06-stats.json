@@ -1,0 +1,230 @@
+{
+  "channellist": [
+    "reglina",
+    "oldskoolplayhousehi",
+    "tuinkabouter1965",
+    "aika_vrdj",
+    "reg_retro",
+    "maiamakalea",
+    "kesibin",
+    "banana_channel_japan",
+    "dj_avt",
+    "djyumaride",
+    "jimmyyyt",
+    "officialdjjohnrobinson",
+    "kellytears710",
+    "iku_soul_aka_barsoulon",
+    "yuramaro",
+    "l___ou",
+    "politicalvinylence",
+    "szechone",
+    "beatsunitedradio",
+    "seven_senshi",
+    "dj_sweetz_beats",
+    "chanraha",
+    "dj_k2thejays",
+    "missprincess81",
+    "djmarie_",
+    "duckxplorertony",
+    "hajitchdj",
+    "motoko448",
+    "djbomtokyo",
+    "djbunta",
+    "deebeejp",
+    "nacheska",
+    "djmarie_afterhours",
+    "hanasuai",
+    "dtiii",
+    "vbotdancebot"
+  ],
+  "perChannel": [
+    {
+      "channel": "reglina",
+      "toJP": 6,
+      "toEN": 2
+    },
+    {
+      "channel": "oldskoolplayhousehi",
+      "toJP": 36,
+      "toEN": 0
+    },
+    {
+      "channel": "tuinkabouter1965",
+      "toJP": 102,
+      "toEN": 9
+    },
+    {
+      "channel": "aika_vrdj",
+      "toJP": 188,
+      "toEN": 8
+    },
+    {
+      "channel": "reg_retro",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "maiamakalea",
+      "toJP": 28,
+      "toEN": 13
+    },
+    {
+      "channel": "kesibin",
+      "toJP": 955,
+      "toEN": 86
+    },
+    {
+      "channel": "banana_channel_japan",
+      "toJP": 8,
+      "toEN": 0
+    },
+    {
+      "channel": "dj_avt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "djyumaride",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "jimmyyyt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "officialdjjohnrobinson",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "kellytears710",
+      "toJP": 1687,
+      "toEN": 254
+    },
+    {
+      "channel": "iku_soul_aka_barsoulon",
+      "toJP": 63,
+      "toEN": 0
+    },
+    {
+      "channel": "yuramaro",
+      "toJP": 1,
+      "toEN": 1
+    },
+    {
+      "channel": "l___ou",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "politicalvinylence",
+      "toJP": 0,
+      "toEN": 1
+    },
+    {
+      "channel": "szechone",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "beatsunitedradio",
+      "toJP": 1,
+      "toEN": 10
+    },
+    {
+      "channel": "seven_senshi",
+      "toJP": 5,
+      "toEN": 1
+    },
+    {
+      "channel": "dj_sweetz_beats",
+      "toJP": 56,
+      "toEN": 6
+    },
+    {
+      "channel": "chanraha",
+      "toJP": 2,
+      "toEN": 4
+    },
+    {
+      "channel": "dj_k2thejays",
+      "toJP": 25,
+      "toEN": 21
+    },
+    {
+      "channel": "missprincess81",
+      "toJP": 5,
+      "toEN": 0
+    },
+    {
+      "channel": "djmarie_",
+      "toJP": 355,
+      "toEN": 75
+    },
+    {
+      "channel": "duckxplorertony",
+      "toJP": 1096,
+      "toEN": 60
+    },
+    {
+      "channel": "hajitchdj",
+      "toJP": 1568,
+      "toEN": 11333
+    },
+    {
+      "channel": "motoko448",
+      "toJP": 465,
+      "toEN": 170
+    },
+    {
+      "channel": "djbomtokyo",
+      "toJP": 5084,
+      "toEN": 1391
+    },
+    {
+      "channel": "djbunta",
+      "toJP": 331,
+      "toEN": 356
+    },
+    {
+      "channel": "deebeejp",
+      "toJP": 1,
+      "toEN": 0
+    },
+    {
+      "channel": "nacheska",
+      "toJP": 6,
+      "toEN": 10
+    },
+    {
+      "channel": "djmarie_afterhours",
+      "toJP": 2,
+      "toEN": 3
+    },
+    {
+      "channel": "hanasuai",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "dtiii",
+      "toJP": 18,
+      "toEN": 10
+    },
+    {
+      "channel": "vbotdancebot",
+      "toJP": 100,
+      "toEN": 4
+    }
+  ],
+  "Month": {
+    "toJP": 12194,
+    "toEN": 13828
+  },
+  "Total": {
+    "toJP": 298069,
+    "toEN": 379057
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "channellist": [
+    "banana_channel_japan",
+    "reglina",
+    "dj_avt",
+    "banana_music_jp",
+    "djyumaride",
+    "jimmytofficial",
+    "ymgcharu",
+    "yukamaru_jp",
+    "oldskoolplayhousehi",
+    "officialdjjohnrobinson",
+    "tuinkabouter1965",
+    "kellytears710",
+    "aika_vrdj",
+    "iku_soul_aka_barsoulon",
+    "akishirota_art"
+  ],
+  "perChannel": [
+    {
+      "channel": "banana_channel_japan",
+      "toJP": 5,
+      "toEN": 1
+    },
+    {
+      "channel": "reglina",
+      "toJP": 32,
+      "toEN": 47
+    },
+    {
+      "channel": "dj_avt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "banana_music_jp",
+      "toJP": 10896,
+      "toEN": 5994
+    },
+    {
+      "channel": "djyumaride",
+      "toJP": 190,
+      "toEN": 35
+    },
+    {
+      "channel": "jimmytofficial",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "ymgcharu",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "yukamaru_jp",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "oldskoolplayhousehi",
+      "toJP": 303,
+      "toEN": 7
+    },
+    {
+      "channel": "officialdjjohnrobinson",
+      "toJP": 16,
+      "toEN": 1
+    },
+    {
+      "channel": "tuinkabouter1965",
+      "toJP": 25,
+      "toEN": 8
+    },
+    {
+      "channel": "kellytears710",
+      "toJP": 61,
+      "toEN": 101
+    },
+    {
+      "channel": "aika_vrdj",
+      "toJP": 97,
+      "toEN": 66
+    },
+    {
+      "channel": "iku_soul_aka_barsoulon",
+      "toJP": 15,
+      "toEN": 3
+    },
+    {
+      "channel": "akishirota_art",
+      "toJP": 15,
+      "toEN": 13
+    }
+  ],
+  "Month": {
+    "toJP": 11655,
+    "toEN": 6276
+  },
+  "Total": {
+    "toJP": 85484,
+    "toEN": 87605
+  }
+}

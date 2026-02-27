@@ -1,0 +1,134 @@
+{
+  "channellist": [
+    "reglina",
+    "banana_music_jp",
+    "oldskoolplayhousehi",
+    "tuinkabouter1965",
+    "aika_vrdj",
+    "akishirota_art",
+    "reg_retro",
+    "maiamakalea",
+    "kesibin",
+    "banana_channel_japan",
+    "dj_avt",
+    "djyumaride",
+    "jimmyyyt",
+    "officialdjjohnrobinson",
+    "kellytears710",
+    "iku_soul_aka_barsoulon",
+    "hajitch",
+    "dj_yuuuki",
+    "yuramaro",
+    "l___ou"
+  ],
+  "perChannel": [
+    {
+      "channel": "reglina",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "banana_music_jp",
+      "toJP": 91,
+      "toEN": 238
+    },
+    {
+      "channel": "oldskoolplayhousehi",
+      "toJP": 156,
+      "toEN": 0
+    },
+    {
+      "channel": "tuinkabouter1965",
+      "toJP": 33,
+      "toEN": 12
+    },
+    {
+      "channel": "aika_vrdj",
+      "toJP": 1090,
+      "toEN": 102
+    },
+    {
+      "channel": "akishirota_art",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "reg_retro",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "maiamakalea",
+      "toJP": 9,
+      "toEN": 24
+    },
+    {
+      "channel": "kesibin",
+      "toJP": 2661,
+      "toEN": 194
+    },
+    {
+      "channel": "banana_channel_japan",
+      "toJP": 6,
+      "toEN": 0
+    },
+    {
+      "channel": "dj_avt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "djyumaride",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "jimmyyyt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "officialdjjohnrobinson",
+      "toJP": 0,
+      "toEN": 1
+    },
+    {
+      "channel": "kellytears710",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "iku_soul_aka_barsoulon",
+      "toJP": 35,
+      "toEN": 10
+    },
+    {
+      "channel": "hajitch",
+      "toJP": 748,
+      "toEN": 3676
+    },
+    {
+      "channel": "dj_yuuuki",
+      "toJP": 36,
+      "toEN": 8
+    },
+    {
+      "channel": "yuramaro",
+      "toJP": 44,
+      "toEN": 60
+    },
+    {
+      "channel": "l___ou",
+      "toJP": 0,
+      "toEN": 0
+    }
+  ],
+  "Month": {
+    "toJP": 4909,
+    "toEN": 4325
+  },
+  "Total": {
+    "toJP": 180860,
+    "toEN": 160682
+  }
+}

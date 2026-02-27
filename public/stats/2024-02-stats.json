@@ -1,0 +1,128 @@
+{
+  "channellist": [
+    "reglina",
+    "banana_music_jp",
+    "oldskoolplayhousehi",
+    "tuinkabouter1965",
+    "aika_vrdj",
+    "reg_retro",
+    "maiamakalea",
+    "kesibin",
+    "banana_channel_japan",
+    "dj_avt",
+    "djyumaride",
+    "jimmyyyt",
+    "officialdjjohnrobinson",
+    "kellytears710",
+    "iku_soul_aka_barsoulon",
+    "hajitch",
+    "dj_yuuuki",
+    "yuramaro",
+    "l___ou"
+  ],
+  "perChannel": [
+    {
+      "channel": "reglina",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "banana_music_jp",
+      "toJP": 455,
+      "toEN": 369
+    },
+    {
+      "channel": "oldskoolplayhousehi",
+      "toJP": 57,
+      "toEN": 0
+    },
+    {
+      "channel": "tuinkabouter1965",
+      "toJP": 1208,
+      "toEN": 86
+    },
+    {
+      "channel": "aika_vrdj",
+      "toJP": 2099,
+      "toEN": 121
+    },
+    {
+      "channel": "reg_retro",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "maiamakalea",
+      "toJP": 5,
+      "toEN": 2
+    },
+    {
+      "channel": "kesibin",
+      "toJP": 308,
+      "toEN": 14
+    },
+    {
+      "channel": "banana_channel_japan",
+      "toJP": 7,
+      "toEN": 0
+    },
+    {
+      "channel": "dj_avt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "djyumaride",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "jimmyyyt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "officialdjjohnrobinson",
+      "toJP": 1,
+      "toEN": 0
+    },
+    {
+      "channel": "kellytears710",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "iku_soul_aka_barsoulon",
+      "toJP": 72,
+      "toEN": 3
+    },
+    {
+      "channel": "hajitch",
+      "toJP": 1214,
+      "toEN": 7546
+    },
+    {
+      "channel": "dj_yuuuki",
+      "toJP": 3,
+      "toEN": 12
+    },
+    {
+      "channel": "yuramaro",
+      "toJP": 5,
+      "toEN": 15
+    },
+    {
+      "channel": "l___ou",
+      "toJP": 0,
+      "toEN": 0
+    }
+  ],
+  "Month": {
+    "toJP": 5434,
+    "toEN": 8168
+  },
+  "Total": {
+    "toJP": 198045,
+    "toEN": 197597
+  }
+}

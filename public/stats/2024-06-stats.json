@@ -1,0 +1,134 @@
+{
+  "channellist": [
+    "reglina",
+    "banana_music_jp",
+    "oldskoolplayhousehi",
+    "tuinkabouter1965",
+    "aika_vrdj",
+    "reg_retro",
+    "maiamakalea",
+    "kesibin",
+    "banana_channel_japan",
+    "dj_avt",
+    "djyumaride",
+    "jimmyyyt",
+    "officialdjjohnrobinson",
+    "kellytears710",
+    "iku_soul_aka_barsoulon",
+    "hajitch",
+    "dj_yuuuki",
+    "yuramaro",
+    "l___ou",
+    "politicalvinylence"
+  ],
+  "perChannel": [
+    {
+      "channel": "reglina",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "banana_music_jp",
+      "toJP": 76,
+      "toEN": 347
+    },
+    {
+      "channel": "oldskoolplayhousehi",
+      "toJP": 128,
+      "toEN": 0
+    },
+    {
+      "channel": "tuinkabouter1965",
+      "toJP": 606,
+      "toEN": 19
+    },
+    {
+      "channel": "aika_vrdj",
+      "toJP": 4151,
+      "toEN": 53
+    },
+    {
+      "channel": "reg_retro",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "maiamakalea",
+      "toJP": 1,
+      "toEN": 0
+    },
+    {
+      "channel": "kesibin",
+      "toJP": 678,
+      "toEN": 75
+    },
+    {
+      "channel": "banana_channel_japan",
+      "toJP": 19,
+      "toEN": 0
+    },
+    {
+      "channel": "dj_avt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "djyumaride",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "jimmyyyt",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "officialdjjohnrobinson",
+      "toJP": 1,
+      "toEN": 0
+    },
+    {
+      "channel": "kellytears710",
+      "toJP": 557,
+      "toEN": 268
+    },
+    {
+      "channel": "iku_soul_aka_barsoulon",
+      "toJP": 71,
+      "toEN": 6
+    },
+    {
+      "channel": "hajitch",
+      "toJP": 2017,
+      "toEN": 15895
+    },
+    {
+      "channel": "dj_yuuuki",
+      "toJP": 7,
+      "toEN": 0
+    },
+    {
+      "channel": "yuramaro",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "l___ou",
+      "toJP": 0,
+      "toEN": 0
+    },
+    {
+      "channel": "politicalvinylence",
+      "toJP": 3,
+      "toEN": 23
+    }
+  ],
+  "Month": {
+    "toJP": 8315,
+    "toEN": 16686
+  },
+  "Total": {
+    "toJP": 227247,
+    "toEN": 244671
+  }
+}
