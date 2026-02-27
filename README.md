@@ -93,10 +93,9 @@ Builds for `linux/amd64` + `linux/arm64` and pushes to Docker Hub as `bielefeldj
 |---|---|
 | Framework | [Nuxt 4](https://nuxt.com) (SPA mode, `ssr: false`) |
 | Charts | [Chart.js](https://www.chartjs.org) via [vue-chartjs](https://vue-chartjs.org) |
-| Styling | CSS custom properties, dark theme |
+| Styling | CSS custom properties, dark theme |--
 | Server | [nginx:alpine](https://hub.docker.com/_/nginx) |
 | Container | Docker + Docker Compose |
-| Proxy | [Caddy](https://caddyserver.com) |
 
 ---
 
