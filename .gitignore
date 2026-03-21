@@ -5,6 +5,7 @@
 .nitro
 .cache
 dist
+public/stats
 
 # Node dependencies
 node_modules
