@@ -223,13 +223,16 @@ export const useStatsData = () => {
       }
     }
 
-    return Object.entries(map)
+    const sorted = Object.entries(map)
       .map(([channel, byLanguage]) => {
         const total = Object.values(byLanguage).reduce((a, b) => a + b, 0)
         return { channel, byLanguage, total }
       })
       .filter(e => e.total > 0)
       .sort((a, b) => b.total - a.total)
+
+    const topN = Number(filters.value.topNChannels ?? 0)
+    return topN > 0 ? sorted.slice(0, topN) : sorted
   })
 
   /** Per-month total per channel for stacked monthly chart. */
@@ -272,6 +275,49 @@ export const useStatsData = () => {
     return { byLanguage, total }
   })
 
+  /** Month-over-month comparison within the current filtered period. */
+  const monthOverMonth = computed(() => {
+    const rows = filteredMonths.value
+    const current = rows[rows.length - 1]
+    const previous = rows[rows.length - 2]
+
+    const sumForMonth = (month?: NormalizedMonth) => {
+      const byLanguage: LanguageTotals = {}
+      if (!month) return { byLanguage, total: 0 }
+
+      for (const ch of effectiveChannels.value) {
+        const d = month.perChannel[ch]
+        if (!d) continue
+        for (const lang of effectiveLanguages.value) {
+          byLanguage[lang] = Number(byLanguage[lang] ?? 0) + Number(d[lang] ?? 0)
+        }
+      }
+      const total = Object.values(byLanguage).reduce((a, b) => a + b, 0)
+      return { byLanguage, total }
+    }
+
+    const curr = sumForMonth(current)
+    const prev = sumForMonth(previous)
+
+    const byLanguage: Record<string, { delta: number; pct: number | null }> = {}
+    for (const lang of effectiveLanguages.value) {
+      const currV = Number(curr.byLanguage[lang] ?? 0)
+      const prevV = Number(prev.byLanguage[lang] ?? 0)
+      const delta = currV - prevV
+      const pct = prevV > 0 ? (delta / prevV) * 100 : null
+      byLanguage[lang] = { delta, pct }
+    }
+
+    const totalDelta = curr.total - prev.total
+    const totalPct = prev.total > 0 ? (totalDelta / prev.total) * 100 : null
+
+    return {
+      hasPrevious: Boolean(previous),
+      byLanguage,
+      total: { delta: totalDelta, pct: totalPct },
+    }
+  })
+
   const languageMeta = computed(() =>
     allLanguages.value.map(key => ({ key, label: toLanguageLabel(key) }))
   )
@@ -293,6 +339,7 @@ export const useStatsData = () => {
     perChannelTotals,
     stackedMonthly,
     grandTotals,
+    monthOverMonth,
     toLanguageLabel,
   }
 }

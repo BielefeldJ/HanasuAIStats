@@ -31,6 +31,70 @@ const visibleChannels = computed(() =>
   allChannels.value.filter((ch: string) => channelsWithData.value.has(ch))
 )
 
+const topNOptions = [
+  { label: '10', value: 10 },
+  { label: '20', value: 20 },
+  { label: '50', value: 50 },
+  { label: 'All', value: 0 },
+]
+
+function applyDatePreset(preset: 'last3' | 'ytd' | 'all') {
+  if (monthOptions.length === 0) return
+
+  const latestOption = monthOptions[monthOptions.length - 1]
+  const earliestOption = monthOptions[0]
+  if (!latestOption || !earliestOption) return
+
+  const latest = latestOption.value
+  const earliest = earliestOption.value
+
+  if (preset === 'all') {
+    filters.value.startMonth = earliest
+    filters.value.endMonth = latest
+    return
+  }
+
+  if (preset === 'last3') {
+    const startIndex = Math.max(0, monthOptions.length - 3)
+    const startOption = monthOptions[startIndex]
+    if (!startOption) return
+    filters.value.startMonth = startOption.value
+    filters.value.endMonth = latest
+    return
+  }
+
+  const year = latest.slice(0, 4)
+  const firstInYear = monthOptions.find(m => m.value.startsWith(`${year}-`))?.value ?? earliest
+  filters.value.startMonth = firstInYear
+  filters.value.endMonth = latest
+}
+
+function isPresetActive(preset: 'last3' | 'ytd' | 'all'): boolean {
+  if (monthOptions.length === 0) return false
+
+  const latestOption = monthOptions[monthOptions.length - 1]
+  const earliestOption = monthOptions[0]
+  if (!latestOption || !earliestOption) return false
+
+  const latest = latestOption.value
+  const earliest = earliestOption.value
+
+  if (preset === 'all') {
+    return filters.value.startMonth === earliest && filters.value.endMonth === latest
+  }
+
+  if (preset === 'last3') {
+    const startIndex = Math.max(0, monthOptions.length - 3)
+    const startOption = monthOptions[startIndex]
+    if (!startOption) return false
+    return filters.value.startMonth === startOption.value && filters.value.endMonth === latest
+  }
+
+  const year = latest.slice(0, 4)
+  const firstInYear = monthOptions.find(m => m.value.startsWith(`${year}-`))?.value ?? earliest
+  return filters.value.startMonth === firstInYear && filters.value.endMonth === latest
+}
+
 const isAllSelected = computed(() =>
   filters.value.selectedChannels.length === allChannels.value.length
 )
@@ -100,6 +164,17 @@ const isOpen = ref(true)
             <span class="channel-name">{{ ch }}</span>
           </label>
         </div>
+
+        <div class="topn-row">
+          <span class="topn-label">Top channels</span>
+          <select v-model.number="filters.topNChannels" class="topn-select">
+            <option
+              v-for="opt in topNOptions"
+              :key="opt.label"
+              :value="opt.value"
+            >{{ opt.label }}</option>
+          </select>
+        </div>
       </div>
 
       <div class="filter-section">
@@ -149,6 +224,11 @@ const isOpen = ref(true)
 
       <div class="filter-section">
         <div class="section-label">Date Range</div>
+        <div class="preset-row">
+          <button class="chip-btn" :class="{ active: isPresetActive('last3') }" @click="applyDatePreset('last3')">Last 3M</button>
+          <button class="chip-btn" :class="{ active: isPresetActive('ytd') }" @click="applyDatePreset('ytd')">YTD</button>
+          <button class="chip-btn" :class="{ active: isPresetActive('all') }" @click="applyDatePreset('all')">All Time</button>
+        </div>
         <div class="date-range">
           <select v-model="filters.startMonth">
             <option
@@ -241,6 +321,30 @@ const isOpen = ref(true)
   gap: 4px;
 }
 
+.topn-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.topn-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.topn-select {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-input);
+  color: var(--text);
+}
+
 .channel-item {
   display: flex;
   align-items: center;
@@ -278,6 +382,13 @@ const isOpen = ref(true)
   font-weight: 700;
   padding: 1px 8px;
   border-radius: 4px;
+}
+
+.preset-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
 .date-range {

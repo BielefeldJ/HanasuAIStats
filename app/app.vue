@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { loadData, isLoading, isLoaded, loadError, grandTotals, filteredMonths, languageMeta } = useStatsData()
+const { loadData, isLoading, isLoaded, loadError, grandTotals, filteredMonths, languageMeta, monthOverMonth } = useStatsData()
 
 onMounted(() => loadData())
 
@@ -13,10 +13,17 @@ const summaryLanguages = computed(() =>
       key: lang.key,
       label: lang.label,
       value: Number(grandTotals.value.byLanguage[lang.key] ?? 0),
+      delta: monthOverMonth.value.byLanguage[lang.key] ?? { delta: 0, pct: null as number | null },
     }))
     .filter(item => item.value > 0)
     .sort((a, b) => b.value - a.value)
 )
+
+function formatDelta(delta: number, pct: number | null): string {
+  const sign = delta >= 0 ? '+' : ''
+  const pctText = pct === null ? 'n/a' : `${pct >= 0 ? '+' : ''}${pct.toFixed(1)}%`
+  return `${sign}${delta.toLocaleString()} (${pctText})`
+}
 
 function languageStatClass(key: string): string {
   let hash = 0
@@ -86,10 +93,24 @@ onErrorCaptured((err) => {
         >
           <div class="stat-value" :class="languageStatClass(lang.key)">{{ fmt(lang.value) }}</div>
           <div class="stat-label">→ {{ lang.label }}</div>
+          <div
+            v-if="monthOverMonth.hasPrevious"
+            class="stat-delta"
+            :class="{ up: (lang.delta.delta ?? 0) >= 0, down: (lang.delta.delta ?? 0) < 0 }"
+          >
+            {{ formatDelta(lang.delta.delta ?? 0, lang.delta.pct ?? null) }} vs prev month
+          </div>
         </div>
         <div class="stat-card">
           <div class="stat-value">{{ fmt(grandTotals.total) }}</div>
           <div class="stat-label">Total Translations</div>
+          <div
+            v-if="monthOverMonth.hasPrevious"
+            class="stat-delta"
+            :class="{ up: monthOverMonth.total.delta >= 0, down: monthOverMonth.total.delta < 0 }"
+          >
+            {{ formatDelta(monthOverMonth.total.delta, monthOverMonth.total.pct) }} vs prev month
+          </div>
         </div>
         <div class="stat-card">
           <div class="stat-value">{{ filteredMonths.length }}</div>
@@ -289,6 +310,12 @@ onErrorCaptured((err) => {
   letter-spacing: 0.06em;
   margin-top: 4px;
 }
+.stat-delta {
+  margin-top: 6px;
+  font-size: 11px;
+}
+.stat-delta.up { color: #6ad27d; }
+.stat-delta.down { color: #ff8b8b; }
 
 .section { width: 100%; }
 .two-col {

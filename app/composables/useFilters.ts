@@ -7,6 +7,7 @@ export interface StatsFilters {
   startMonth: string // "YYYY-MM"
   endMonth: string   // "YYYY-MM"
   viewMode: ViewMode
+  topNChannels: number // 0 = all
 }
 
 function currentYearMonth(): string {
@@ -21,5 +22,6 @@ export const useFilters = () => {
     startMonth: '2021-09',
     endMonth: currentYearMonth(),
     viewMode: 'monthly',
+    topNChannels: 20,
   }))
 }
