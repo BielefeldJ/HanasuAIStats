@@ -23,9 +23,18 @@ function languageColor(language: string, alpha = 1): string {
 }
 
 const filters = useFilters()
-const { allChannels, languageMeta, channelsWithData } = useStatsData()
+const { allChannels, languageMeta, channelsWithData, topNChannelsByAll } = useStatsData()
 
 const monthOptions = getAllMonths().map(m => ({ value: m.yearMonth, label: m.label }))
+
+// When top N changes, auto-select only the top N channels
+watchEffect(() => {
+  // Access topNChannels to create dependency
+  const _ = filters.value.topNChannels
+  // Now update selected channels to match the top N across all channels
+  const topChannels = topNChannelsByAll.value.map((item: { channel: string; byLanguage: any; total: number }) => item.channel)
+  filters.value.selectedChannels = topChannels
+})
 
 const visibleChannels = computed(() =>
   allChannels.value.filter((ch: string) => channelsWithData.value.has(ch))

@@ -235,6 +235,34 @@ export const useStatsData = () => {
     return topN > 0 ? sorted.slice(0, topN) : sorted
   })
 
+  /** Top N channels computed across ALL channels (for filter panel auto-select). */
+  const topNChannelsByAll = computed(() => {
+    const map: Record<string, LanguageTotals> = {}
+
+    for (const m of filteredMonths.value) {
+      for (const ch of allChannels.value) {
+        const d = m.perChannel[ch]
+        if (!d) continue
+
+        if (!map[ch]) map[ch] = {}
+        for (const lang of effectiveLanguages.value) {
+          map[ch][lang] = Number(map[ch][lang] ?? 0) + Number(d[lang] ?? 0)
+        }
+      }
+    }
+
+    const sorted = Object.entries(map)
+      .map(([channel, byLanguage]) => {
+        const total = Object.values(byLanguage).reduce((a, b) => a + b, 0)
+        return { channel, byLanguage, total }
+      })
+      .filter(e => e.total > 0)
+      .sort((a, b) => b.total - a.total)
+
+    const topN = Number(filters.value.topNChannels ?? 0)
+    return topN > 0 ? sorted.slice(0, topN) : sorted
+  })
+
   /** Per-month total per channel for stacked monthly chart. */
   const stackedMonthly = computed(() =>
     filteredMonths.value.map(m => {
@@ -337,6 +365,7 @@ export const useStatsData = () => {
     aggregatedTimeSeries,
     channelsWithData,
     perChannelTotals,
+    topNChannelsByAll,
     stackedMonthly,
     grandTotals,
     monthOverMonth,
