@@ -1,10 +1,30 @@
 <script setup lang="ts">
-const { loadData, isLoading, isLoaded, loadError, grandTotals, filteredMonths } = useStatsData()
+const { loadData, isLoading, isLoaded, loadError, grandTotals, filteredMonths, languageMeta } = useStatsData()
 
 onMounted(() => loadData())
 
 function fmt(n: number): string {
   return n.toLocaleString()
+}
+
+const summaryLanguages = computed(() =>
+  languageMeta.value
+    .map(lang => ({
+      key: lang.key,
+      label: lang.label,
+      value: Number(grandTotals.value.byLanguage[lang.key] ?? 0),
+    }))
+    .filter(item => item.value > 0)
+    .sort((a, b) => b.value - a.value)
+)
+
+function languageStatClass(key: string): string {
+  let hash = 0
+  for (let i = 0; i < key.length; i++) {
+    hash = key.charCodeAt(i) + ((hash << 5) - hash)
+    hash |= 0
+  }
+  return `lang-${Math.abs(hash) % 8}`
 }
 
 onErrorCaptured((err) => {
@@ -59,13 +79,13 @@ onErrorCaptured((err) => {
 
       <!-- Summary row -->
       <section class="summary-row">
-        <div class="stat-card">
-          <div class="stat-value jp">{{ fmt(grandTotals.toJP) }}</div>
-          <div class="stat-label">→ Japanese</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value en">{{ fmt(grandTotals.toEN) }}</div>
-          <div class="stat-label">→ English</div>
+        <div
+          v-for="lang in summaryLanguages"
+          :key="lang.key"
+          class="stat-card"
+        >
+          <div class="stat-value" :class="languageStatClass(lang.key)">{{ fmt(lang.value) }}</div>
+          <div class="stat-label">→ {{ lang.label }}</div>
         </div>
         <div class="stat-card">
           <div class="stat-value">{{ fmt(grandTotals.total) }}</div>
@@ -110,7 +130,7 @@ onErrorCaptured((err) => {
       <section class="section">
         <div class="chart-card">
           <h2 class="chart-title">Monthly Channel Composition</h2>
-          <p class="chart-desc">Combined JP + EN translations, stacked by channel</p>
+          <p class="chart-desc">Combined selected-language translations, stacked by channel</p>
           <div class="chart-area tall">
             <ChartsStackedBarChart />
           </div>
@@ -237,7 +257,7 @@ onErrorCaptured((err) => {
 
 .summary-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 12px;
 }
 .stat-card {
@@ -254,8 +274,14 @@ onErrorCaptured((err) => {
   line-height: 1.2;
   letter-spacing: -0.03em;
 }
-.stat-value.jp { color: var(--accent-jp); }
-.stat-value.en { color: var(--accent-en); }
+.stat-value.lang-0 { color: hsl(205, 80%, 62%); }
+.stat-value.lang-1 { color: hsl(26, 85%, 62%); }
+.stat-value.lang-2 { color: hsl(142, 65%, 55%); }
+.stat-value.lang-3 { color: hsl(292, 70%, 66%); }
+.stat-value.lang-4 { color: hsl(348, 78%, 63%); }
+.stat-value.lang-5 { color: hsl(52, 85%, 60%); }
+.stat-value.lang-6 { color: hsl(180, 62%, 58%); }
+.stat-value.lang-7 { color: hsl(255, 75%, 68%); }
 .stat-label {
   font-size: 11px;
   color: var(--text-muted);

@@ -13,7 +13,7 @@ function channelColor(channel: string, alpha = 1): string {
   return `hsla(${h}, ${s}%, ${l}%, ${alpha})`
 }
 
-const { stackedMonthly, effectiveChannels } = useStatsData()
+const { stackedMonthly } = useStatsData()
 const filters = useFilters()
 
 const chartKey = computed(() =>
@@ -22,9 +22,11 @@ const chartKey = computed(() =>
 )
 
 const chartData = computed(() => {
-  const rows     = stackedMonthly.value
-  const channels = effectiveChannels.value
-  const labels   = rows.map(r => r.label)
+  const rows = stackedMonthly.value
+  const labels = rows.map(r => r.label)
+  const channels = Array.from(
+    new Set(rows.flatMap(r => Object.keys(r.channels).filter(ch => (r.channels[ch] ?? 0) > 0)))
+  )
 
   const datasets = channels.map(ch => ({
     label: ch,

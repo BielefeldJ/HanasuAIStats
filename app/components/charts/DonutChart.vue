@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { Doughnut } from 'vue-chartjs'
 
-const JP_COLOR = 'hsla(205, 75%, 58%, 1)'
-const EN_COLOR = 'hsla(25, 80%, 60%, 1)'
-
 function channelColor(channel: string, alpha = 1): string {
   let hash = 0
   for (let i = 0; i < channel.length; i++) {
@@ -16,11 +13,30 @@ function channelColor(channel: string, alpha = 1): string {
   return `hsla(${h}, ${s}%, ${l}%, ${alpha})`
 }
 
-const { perChannelTotals, grandTotals } = useStatsData()
+function languageColor(language: string, alpha = 1): string {
+  let hash = 0
+  for (let i = 0; i < language.length; i++) {
+    hash = language.charCodeAt(i) + ((hash << 5) - hash)
+    hash |= 0
+  }
+  const h = Math.abs(hash) % 360
+  const s = 62 + (Math.abs(hash >> 8) % 18)
+  const l = 52 + (Math.abs(hash >> 16) % 10)
+  return `hsla(${h}, ${s}%, ${l}%, ${alpha})`
+}
+
+const { perChannelTotals, grandTotals, languageMeta } = useStatsData()
 const filters = useFilters()
 
 type DonutMode = 'channels' | 'languages'
 const donutMode = ref<DonutMode>('channels')
+
+const languageLabels = computed(() => {
+  const map = new Map<string, string>(
+    languageMeta.value.map((l: { key: string; label: string }) => [l.key, l.label])
+  )
+  return map
+})
 
 const chartKey = computed(() =>
   filters.value.selectedChannels.join() +
@@ -31,32 +47,24 @@ const chartKey = computed(() =>
 
 const chartData = computed(() => {
   if (donutMode.value === 'languages') {
-    const labels: string[] = []
-    const data: number[]   = []
-    const colors: string[] = []
+    const labels = filters.value.selectedLanguages.map(lang => `→ ${languageLabels.value.get(lang) ?? lang}`)
+    const data = filters.value.selectedLanguages.map(lang => Number(grandTotals.value.byLanguage[lang] ?? 0))
+    const colors = filters.value.selectedLanguages.map(lang => languageColor(lang, 1))
 
-    if (filters.value.selectedLanguages.includes('toJP')) {
-      labels.push('→ Japanese')
-      data.push(grandTotals.value.toJP)
-      colors.push(JP_COLOR)
+    return {
+      labels,
+      datasets: [{ data, backgroundColor: colors, borderColor: '#12122a', borderWidth: 2 }],
     }
-    if (filters.value.selectedLanguages.includes('toEN')) {
-      labels.push('→ English')
-      data.push(grandTotals.value.toEN)
-      colors.push(EN_COLOR)
-    }
-    return { labels, datasets: [{ data, backgroundColor: colors, borderColor: '#12122a', borderWidth: 2 }] }
   }
 
-  // Per-channel mode
   const entries = perChannelTotals.value
   return {
-    labels:   entries.map(e => e.channel),
+    labels: entries.map((e: { channel: string }) => e.channel),
     datasets: [{
-      data:            entries.map(e => e.total),
-      backgroundColor: entries.map(e => channelColor(e.channel, 0.85)),
-      borderColor:     '#12122a',
-      borderWidth:     2,
+      data: entries.map((e: { total: number }) => e.total),
+      backgroundColor: entries.map((e: { channel: string }) => channelColor(e.channel, 0.85)),
+      borderColor: '#12122a',
+      borderWidth: 2,
     }],
   }
 })
@@ -85,7 +93,7 @@ const chartOptions = computed(() => ({
       callbacks: {
         label: (ctx: any) => {
           const total = (ctx.dataset.data as number[]).reduce((a: number, b: number) => a + b, 0)
-          const pct   = total ? ((ctx.raw / total) * 100).toFixed(1) : '0.0'
+          const pct = total ? ((ctx.raw / total) * 100).toFixed(1) : '0.0'
           return ` ${Number(ctx.raw).toLocaleString()} (${pct}%)`
         },
       },
@@ -101,7 +109,7 @@ const chartOptions = computed(() => ({
         By Channel
       </button>
       <button :class="['mode-btn', { active: donutMode === 'languages' }]" @click="donutMode = 'languages'">
-        JP vs EN
+        By Language
       </button>
     </div>
     <div class="donut-chart">

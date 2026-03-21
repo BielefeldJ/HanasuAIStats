@@ -1,4 +1,4 @@
-export type Language = 'toJP' | 'toEN'
+export type Language = string
 export type ViewMode = 'monthly' | 'cumulative'
 
 export interface StatsFilters {
@@ -17,7 +17,7 @@ function currentYearMonth(): string {
 export const useFilters = () => {
   return useState<StatsFilters>('stats-filters', () => ({
     selectedChannels: [],
-    selectedLanguages: ['toJP', 'toEN'],
+    selectedLanguages: [],
     startMonth: '2021-09',
     endMonth: currentYearMonth(),
     viewMode: 'monthly',

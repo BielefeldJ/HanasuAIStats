@@ -1,13 +1,27 @@
 <script setup lang="ts">
 import { Line } from 'vue-chartjs'
 
-const JP_COLOR    = 'hsla(205, 75%, 58%, 1)'
-const JP_COLOR_BG = 'hsla(205, 75%, 58%, 0.18)'
-const EN_COLOR    = 'hsla(25, 80%, 60%, 1)'
-const EN_COLOR_BG = 'hsla(25, 80%, 60%, 0.18)'
+function languageColor(language: string, alpha = 1): string {
+  let hash = 0
+  for (let i = 0; i < language.length; i++) {
+    hash = language.charCodeAt(i) + ((hash << 5) - hash)
+    hash |= 0
+  }
+  const h = Math.abs(hash) % 360
+  const s = 62 + (Math.abs(hash >> 8) % 18)
+  const l = 52 + (Math.abs(hash >> 16) % 10)
+  return `hsla(${h}, ${s}%, ${l}%, ${alpha})`
+}
 
-const { aggregatedTimeSeries } = useStatsData()
+const { aggregatedTimeSeries, languageMeta } = useStatsData()
 const filters = useFilters()
+
+const languageLabels = computed(() => {
+  const map = new Map<string, string>(
+    languageMeta.value.map((l: { key: string; label: string }) => [l.key, l.label])
+  )
+  return map
+})
 
 const chartKey = computed(() =>
   filters.value.selectedChannels.join() +
@@ -18,34 +32,18 @@ const chartKey = computed(() =>
 
 const chartData = computed(() => {
   const series = aggregatedTimeSeries.value
-  const labels = series.map(s => s.label)
-  const datasets: any[] = []
+  const labels = series.map((s: { label: string }) => s.label)
 
-  if (filters.value.selectedLanguages.includes('toJP')) {
-    datasets.push({
-      label: '→ Japanese',
-      data: series.map(s => s.toJP),
-      borderColor: JP_COLOR,
-      backgroundColor: JP_COLOR_BG,
-      fill: true,
-      tension: 0.35,
-      pointRadius: series.length > 30 ? 0 : 3,
-      pointHoverRadius: 6,
-    })
-  }
-
-  if (filters.value.selectedLanguages.includes('toEN')) {
-    datasets.push({
-      label: '→ English',
-      data: series.map(s => s.toEN),
-      borderColor: EN_COLOR,
-      backgroundColor: EN_COLOR_BG,
-      fill: true,
-      tension: 0.35,
-      pointRadius: series.length > 30 ? 0 : 3,
-      pointHoverRadius: 6,
-    })
-  }
+  const datasets = filters.value.selectedLanguages.map(lang => ({
+    label: `→ ${languageLabels.value.get(lang) ?? lang}`,
+    data: series.map((s: { byLanguage: Record<string, number> }) => Number(s.byLanguage[lang] ?? 0)),
+    borderColor: languageColor(lang, 1),
+    backgroundColor: languageColor(lang, 0.18),
+    fill: true,
+    tension: 0.35,
+    pointRadius: series.length > 30 ? 0 : 3,
+    pointHoverRadius: 6,
+  }))
 
   return { labels, datasets }
 })

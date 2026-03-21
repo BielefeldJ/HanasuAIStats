@@ -10,10 +10,26 @@ function channelColor(channel: string, alpha = 1): string {
   return `hsla(${hue}, 65%, 58%, ${alpha})`
 }
 
-const filters    = useFilters()
-const { allChannels } = useStatsData()
+function languageColor(language: string, alpha = 1): string {
+  let hash = 0
+  for (let i = 0; i < language.length; i++) {
+    hash = language.charCodeAt(i) + ((hash << 5) - hash)
+    hash |= 0
+  }
+  const h = Math.abs(hash) % 360
+  const s = 62 + (Math.abs(hash >> 8) % 18)
+  const l = 52 + (Math.abs(hash >> 16) % 10)
+  return `hsla(${h}, ${s}%, ${l}%, ${alpha})`
+}
+
+const filters = useFilters()
+const { allChannels, languageMeta, channelsWithData } = useStatsData()
 
 const monthOptions = getAllMonths().map(m => ({ value: m.yearMonth, label: m.label }))
+
+const visibleChannels = computed(() =>
+  allChannels.value.filter((ch: string) => channelsWithData.value.has(ch))
+)
 
 const isAllSelected = computed(() =>
   filters.value.selectedChannels.length === allChannels.value.length
@@ -40,13 +56,12 @@ function toggleAll() {
   }
 }
 
-function toggleLanguage(lang: 'toJP' | 'toEN') {
+function toggleLanguage(lang: string) {
   const idx = filters.value.selectedLanguages.indexOf(lang)
   if (idx >= 0) {
     if (filters.value.selectedLanguages.length > 1) {
       filters.value.selectedLanguages.splice(idx, 1)
     }
-    // Don't allow deselecting the last language
   } else {
     filters.value.selectedLanguages.push(lang)
   }
@@ -63,7 +78,6 @@ const isOpen = ref(true)
     </div>
 
     <div v-if="isOpen" class="filter-body">
-      <!-- Channels -->
       <div class="filter-section">
         <div class="section-label">
           Channels
@@ -73,7 +87,7 @@ const isOpen = ref(true)
         </div>
         <div class="channel-list">
           <label
-            v-for="ch in allChannels"
+            v-for="ch in visibleChannels"
             :key="ch"
             class="channel-item"
           >
@@ -88,30 +102,27 @@ const isOpen = ref(true)
         </div>
       </div>
 
-      <!-- Languages -->
       <div class="filter-section">
         <div class="section-label">Language</div>
         <div class="toggle-group">
-          <label class="toggle-item">
+          <label
+            v-for="lang in languageMeta"
+            :key="lang.key"
+            class="toggle-item"
+          >
             <input
               type="checkbox"
-              :checked="filters.selectedLanguages.includes('toJP')"
-              @change="toggleLanguage('toJP')"
+              :checked="filters.selectedLanguages.includes(lang.key)"
+              @change="toggleLanguage(lang.key)"
             />
-            <span class="lang-badge jp">→ JP</span>
-          </label>
-          <label class="toggle-item">
-            <input
-              type="checkbox"
-              :checked="filters.selectedLanguages.includes('toEN')"
-              @change="toggleLanguage('toEN')"
-            />
-            <span class="lang-badge en">→ EN</span>
+            <span
+              class="lang-badge"
+              :style="{ background: languageColor(lang.key, 0.2), color: languageColor(lang.key, 1) }"
+            >→ {{ lang.label }}</span>
           </label>
         </div>
       </div>
 
-      <!-- View Mode -->
       <div class="filter-section">
         <div class="section-label">View</div>
         <div class="toggle-group">
@@ -136,7 +147,6 @@ const isOpen = ref(true)
         </div>
       </div>
 
-      <!-- Date Range -->
       <div class="filter-section">
         <div class="section-label">Date Range</div>
         <div class="date-range">
@@ -188,7 +198,7 @@ const isOpen = ref(true)
 
 .filter-body {
   display: grid;
-  grid-template-columns: 1fr 120px 160px 1fr;
+  grid-template-columns: 1fr 160px 160px 1fr;
   gap: 0;
 }
 
@@ -269,8 +279,6 @@ const isOpen = ref(true)
   padding: 1px 8px;
   border-radius: 4px;
 }
-.lang-badge.jp { background: hsla(205, 75%, 58%, 0.2); color: var(--accent-jp); }
-.lang-badge.en { background: hsla(25, 80%, 60%, 0.2);  color: var(--accent-en); }
 
 .date-range {
   display: flex;
