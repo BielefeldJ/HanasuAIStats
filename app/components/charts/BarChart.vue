@@ -85,7 +85,18 @@ const chartOptions = {
 </script>
 
 <template>
-  <div :style="{ height: chartHeight + 'px', position: 'relative' }">
-    <Bar :key="chartKey" :data="chartData" :options="chartOptions" />
+  <div class="bar-scroll">
+    <div :style="{ height: chartHeight + 'px', position: 'relative' }">
+      <Bar :key="chartKey" :data="chartData" :options="chartOptions" />
+    </div>
   </div>
 </template>
+
+<style scoped>
+.bar-scroll {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 4px;
+}
+</style>

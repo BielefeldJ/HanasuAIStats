@@ -112,7 +112,7 @@ onErrorCaptured((err) => {
         <div class="chart-card">
           <h2 class="chart-title">Translations per Channel</h2>
           <p class="chart-desc">Total in selected period, sorted by volume</p>
-          <div class="chart-area" style="height: auto; min-height: 240px">
+          <div class="chart-area medium">
             <ChartsBarChart />
           </div>
         </div>
