@@ -11,11 +11,17 @@ At least for now :D Maybe I'll learn a bit about nuxt using this.
 
 ## Features
 
-- 📈 **Translation Trends** — line chart of JP/EN translations over time
-- 📊 **Per-Channel Totals** — horizontal bar chart sorted by volume
+- � **HanasuAI Profile** — Twitch avatar, profile link, and bio at the top of the dashboard
+- 📈 **Translation Trends** — line chart of translations over time (supports all languages dynamically)
+- 📊 **Per-Channel Totals** — horizontal bar chart sorted by volume with scrolling for many channels
 - 🍩 **Translation Split** — donut chart by channel or language
 - 🧱 **Monthly Channel Composition** — stacked bar chart per month
-- 🔍 **Filters** — select channels, languages, date range, monthly vs. cumulative view
+- 🗣️ **Dynamic Languages** — auto-detects all translation languages from stats files (not hardcoded to JP/EN)
+- 🎯 **Top N Channels** — quick dropdown to limit charts to top 10, 20, 50, or all channels
+- 📅 **Date Presets** — quick buttons for Last 3 Months, Year-to-Date, or All Time ranges
+- 📊 **Month-over-Month Deltas** — see translation change (+/-) and percentage vs. previous month
+- 🔍 **Smart Filtering** — select channels, languages, date range, and view mode (monthly vs. cumulative)
+- 🚫 **Auto-Hide Zero Channels** — only shows channels that have data for selected languages
 - 🐳 **Docker-ready** — stats JSON files are volume-mounted; new monthly files are served instantly without rebuilding the image
 
 ---
@@ -38,15 +44,18 @@ Each file follows this schema:
 {
   "channellist": ["channel1", "channel2"],
   "perChannel": [
-    { "channel": "channel1", "toJP": 1234, "toEN": 567 }
+    { "channel": "channel1", "toJP": 1234, "toEN": 567, "toES": 89, "toFR": 45 }
   ],
-  "Month":  { "toJP": 1801, "toEN": 890 },
-  "Total":  { "toJP": 99000, "toEN": 45000 }
+  "Month":  { "toJP": 1801, "toEN": 890, "toES": 120, "toFR": 67 },
+  "Total":  { "toJP": 99000, "toEN": 45000, "toES": 5400, "toFR": 2100 }
 }
 ```
 
+- **Language Keys** — any key starting with `to` + language code (e.g., `toJP`, `toEN`, `toES`, `toDE`, `toRU`, `toZH`, `toKO`) is auto-detected and displayed
 - **`Month`** — translations for this calendar month only
 - **`Total`** — cumulative totals since tracking began (used for the Cumulative view mode)
+
+The dashboard automatically discovers all language codes from your stats files and displays them with native script names (e.g., "Japanese (日本語)", "Spanish (Español)", etc.)
 
 ---
 
@@ -103,4 +112,4 @@ Builds for `linux/amd64` + `linux/arm64` and pushes to Docker Hub as `bielefeldj
 
 > *"Hey! My name is HanasuAI. I am an expert in translating messages in chat. 🥰"*
 
-HanasuAI is a Twitch bot that translates viewer messages between Japanese and English in real time. Follow on Twitch: [twitch.tv/hanasuai](https://www.twitch.tv/hanasuai)
+HanasuAI is a Twitch bot that translates viewer messages between Japanese and multiple other languages in real time. This dashboard tracks translation statistics across any number of target languages. Follow on Twitch: [twitch.tv/hanasuai](https://www.twitch.tv/hanasuai)
