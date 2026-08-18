@@ -51,9 +51,8 @@ jobs:
             bielefeldj/hanasuai-stats
             ghcr.io/bielefeldj/hanasuai-stats
           tags: |
-            type=ref,event=branch
             type=ref,event=tag
-            type=sha,prefix=
+            type=sha,format=short,prefix=
             type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Build and push Docker image
