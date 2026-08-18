@@ -88,11 +88,17 @@ The `docker-compose.yml` mounts `../stats` read-only into the container at `/sta
 
 ### Build & push multi-arch image
 
+The repository now includes a GitHub Actions workflow that builds the container automatically on pushes to `main` and on tags like `v1.2.3`.
+
+To enable publishing to Docker Hub, add a repository secret called `DOCKERHUB_TOKEN` with a Docker Hub access token for the `bielefeldj` account. GHCR publishing uses the standard `GITHUB_TOKEN`, so no extra secret is required.
+
+For manual local builds, the legacy script still works:
+
 ```bat
 build.bat
 ```
 
-Builds for `linux/amd64` + `linux/arm64` and pushes to Docker Hub as `bielefeldj/hanasuai-stats:latest` and `bielefeldj/hanasuai-stats:<git-hash>`.
+This builds for `linux/amd64` + `linux/arm64` and pushes to Docker Hub as `bielefeldj/hanasuai-stats:latest` and `bielefeldj/hanasuai-stats:<git-hash>`.
 
 ---
 
