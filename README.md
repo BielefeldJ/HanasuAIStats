@@ -90,7 +90,7 @@ The `docker-compose.yml` mounts `../stats` read-only into the container at `/sta
 
 The repository now includes a GitHub Actions workflow that builds the container automatically on pushes to `main` and on tags like `v1.2.3`.
 
-To enable publishing to Docker Hub, add a repository secret called `DOCKERHUB_TOKEN` with a Docker Hub access token for the `bielefeldj` account. GHCR publishing uses the standard `GITHUB_TOKEN`, so no extra secret is required.
+To publish images from GitHub Actions, add a repository secret called `DOCKERHUB_TOKEN` with a Docker Hub access token for the `bielefeldj` account (required for workflow runs on `main`/tags to succeed). GHCR publishing uses the standard `GITHUB_TOKEN`, so no extra secret is required.
 
 For manual local builds, the legacy script still works:
 
